@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel — PodCastelo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <form action="#" method="post" class="logout-form inline-form">
+                <button type="submit" class="btn-back">Sair</button>
+            </form>
+        </div>
+
+        <header class="page-header">
+            <span class="logo" aria-hidden="true">🏰</span>
+            <h1>PodCastelo</h1>
+            <p>Catálogo de Podcasts e Episódios — Painel de Controle</p>
+        </header>
+
+        <section class="stats-grid" aria-label="Estatísticas do catálogo">
+            <article class="stat-card">
+                <span class="stat-number">12</span>
+                <span>Programas Cadastrados</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-number">87</span>
+                <span>Episódios no Catálogo</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-number">8</span>
+                <span>Categorias Únicas</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-number">5</span>
+                <span>Países Representados</span>
+            </article>
+        </section>
+
+        <nav class="menu-grid" aria-label="Menu principal">
+            <a href="cadastro_programa.html" class="menu-card">
+                <span class="menu-card-icon" aria-hidden="true">🎙️</span>
+                <span class="menu-card-title">Gerenciar Programas</span>
+                <span class="menu-card-desc">Cadastrar, editar e listar podcasts/programas</span>
+            </a>
+
+            <a href="cadastro_episodio.html" class="menu-card">
+                <span class="menu-card-icon" aria-hidden="true">🎧</span>
+                <span class="menu-card-title">Cadastrar Episódios</span>
+                <span class="menu-card-desc">Adicionar novos episódios aos programas existentes</span>
+            </a>
+
+            <a href="listagem_episodios.html" class="menu-card">
+                <span class="menu-card-icon" aria-hidden="true">📚</span>
+                <span class="menu-card-title">Biblioteca de Episódios</span>
+                <span class="menu-card-desc">Filtrar, buscar e gerenciar todos os episódios</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

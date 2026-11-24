@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Episódio — PodCastelo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <a href="index.html" class="btn-back">← Voltar ao Painel</a>
+        </div>
+
+        <header class="page-header-bar">
+            <h2>Cadastrar Novo Episódio</h2>
+        </header>
+
+        <form action="#" method="post" enctype="multipart/form-data" novalidate>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="programa_id">Programa <span class="required" aria-hidden="true">*</span></label>
+                    <select id="programa_id" name="programa_id" required>
+                        <option value="">Selecione um programa</option>
+                        <option value="1">Flow Podcast</option>
+                        <option value="2">Nerdcast</option>
+                        <option value="3">Braincast</option>
+                        <option value="4">Mamilos</option>
+                        <option value="5">CBN Professional</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="titulo">Título do Episódio <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text"
+                           id="titulo"
+                           name="titulo"
+                           placeholder="Ex: #123 - O Futuro da IA com Sam Altman"
+                           required
+                           maxlength="200">
+                </div>
+
+                <div class="form-group">
+                    <label for="numero">Número do Episódio <span class="required" aria-hidden="true">*</span></label>
+                    <input type="number"
+                           id="numero"
+                           name="numero"
+                           min="1"
+                           max="9999"
+                           placeholder="Ex: 123"
+                           required>
+                    <small>Número sequencial do episódio no programa.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="temporada">Temporada</label>
+                    <input type="number"
+                           id="temporada"
+                           name="temporada"
+                           min="1"
+                           max="99"
+                           placeholder="Ex: 1"
+                           value="1">
+                    <small>Opcional. Use se o programa tiver temporadas definidas.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_lancamento">Data de Lançamento <span class="required" aria-hidden="true">*</span></label>
+                    <input type="date"
+                           id="data_lancamento"
+                           name="data_lancamento"
+                           required
+                           max="2026-12-31">
+                </div>
+
+                <div class="form-group">
+                    <label for="duracao">Duração <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text"
+                           id="duracao"
+                           name="duracao"
+                           placeholder="Ex: 1h 45min, 02:30:00, 90min"
+                           required
+                           maxlength="20"
+                           pattern="^([0-9]{1,2}h\s?)?([0-9]{1,2}min?)?$|^([0-9]{1,2}:)?([0-9]{1,2}:)?[0-9]{1,2}$">
+                    <small>Formatos aceitos: "1h 30min", "90min", "01:30:00", "1:30:00".</small>
+                </div>
+
+                <div class="form-group full">
+                    <label for="descricao">Descrição / Sinopse do Episódio</label>
+                    <textarea id="descricao"
+                              name="descricao"
+                              placeholder="Resumo do que será abordado neste episódio, convidados, temas principais..."
+                              rows="5"
+                              maxlength="3000"></textarea>
+                    <small>Máximo 3.000 caracteres. Descreva os tópicos, convidados e links mencionados.</small>
+                </div>
+
+                <div class="form-group full">
+                    <label for="link_externo">Link Externo (YouTube / Spotify / RSS / Site)</label>
+                    <input type="url"
+                           id="link_externo"
+                           name="link_externo"
+                           placeholder="https://youtube.com/watch?v=... ou https://open.spotify.com/episode/..."
+                           maxlength="500">
+                    <small>Link para o episódio no YouTube, Spotify, Apple Podcasts, feed RSS ou site oficial.</small>
+                </div>
+
+                <div class="form-group full">
+                    <label for="capa">Capa do Episódio (Imagem)</label>
+                    <input type="file"
+                           id="capa"
+                           name="capa"
+                           accept="image/jpeg,image/png,image/webp">
+                    <small>Formatos aceitos: JPG, PNG, WebP. Tamanho máximo: 5 MB. Recomendado: 3000×3000 px (será redimensionado para 300×300 px).</small>
+
+                    <div class="current-image" style="display: none;">
+                        <img src="" alt="Pré-visualização da capa atual" id="preview-capa">
+                        <small>Imagem atual do episódio. Envie um novo arquivo para substituir.</small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar Episódio</button>
+                    <a href="index.html" class="btn-back">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Pré-visualização da imagem selecionada
+        const inputCapa = document.getElementById('capa');
+        const previewContainer = document.querySelector('.current-image');
+        const previewImg = document.getElementById('preview-capa');
+
+        inputCapa.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                // Validação client-side básica
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Arquivo muito grande. Tamanho máximo: 5 MB.');
+                    this.value = '';
+                    return;
+                }
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Formato não suportado. Use JPG, PNG ou WebP.');
+                    this.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewContainer.style.display = 'flex';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        });
+
+        // Formatação automática de duração
+        const inputDuracao = document.getElementById('duracao');
+        inputDuracao.addEventListener('blur', function() {
+            let val = this.value.trim();
+            // Converte formatos variados para formato padrão (ex: "1h 30min")
+            if (/^\d+:\d+:\d+$/.test(val)) {
+                // Já está no formato HH:MM:SS
+            } else if (/^\d+:\d+$/.test(val)) {
+                // MM:SS -> adiciona 0h
+                const [m, s] = val.split(':');
+                if (parseInt(m) >= 60) {
+                    const h = Math.floor(parseInt(m) / 60);
+                    const min = parseInt(m) % 60;
+                    this.value = `${h}h ${min}min`;
+                }
+            } else if (/^\d+min$/i.test(val)) {
+                // 90min -> 1h 30min
+                const min = parseInt(val);
+                if (min >= 60) {
+                    const h = Math.floor(min / 60);
+                    const m = min % 60;
+                    this.value = `${h}h ${m}min`;
+                }
+            } else if (/^\d+h$/i.test(val)) {
+                // 2h -> 2h 0min
+                this.value = val + ' 0min';
+            }
+        });
+    </script>
+</body>
+</html>

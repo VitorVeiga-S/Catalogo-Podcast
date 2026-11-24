@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — PodCastelo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="login-page">
+        <div class="login-card">
+            <div class="login-header">
+                <span class="logo" aria-hidden="true">🏰</span>
+                <h1>PodCastelo</h1>
+                <p>Catálogo de Podcasts e Episódios</p>
+            </div>
+
+            <form action="#" method="post" novalidate>
+                <div class="form-group">
+                    <label for="usuario">Usuário</label>
+                    <input type="text"
+                           id="usuario"
+                           name="usuario"
+                           autocomplete="username"
+                           placeholder="Digite seu usuário"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password"
+                           id="senha"
+                           name="senha"
+                           autocomplete="current-password"
+                           placeholder="Digite sua senha"
+                           required>
+                </div>
+
+                <button type="submit" class="btn-primary">Entrar</button>
+            </form>
+
+            <div class="login-hint">
+                <strong>Credenciais de demonstração:</strong><br>
+                Usuário: <code>admin</code> &nbsp;|&nbsp; Senha: <code>123</code>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
