@@ -9,7 +9,8 @@ O **PodCast Hub** é um sistema web desenvolvido como parte de um Projeto Integr
 Desenvolver uma plataforma que centralize o gerenciamento de podcasts e seus episódios, facilitando a organização das informações e a busca por conteúdos.
 
 
-### Link do protótipo de alta fidelidade feito pelo Figma: https://www.figma.com/design/8GM4r7R4IYAWkyFNmir6Jc/Untitled?node-id=0-1&t=2ATVi8cKm3tRK0yd-1
+### Link do protótipo de alta fidelidade feito pelo Figma:
+https://www.figma.com/design/8GM4r7R4IYAWkyFNmir6Jc/Untitled?node-id=0-1&t=2ATVi8cKm3tRK0yd-1
 
 
 ## 💻 Tecnologias utilizadas
@@ -35,5 +36,3 @@ Desenvolver uma plataforma que centralize o gerenciamento de podcasts e seus epi
 O sistema utiliza o MySQL para armazenar as informações.
 
 A estrutura relaciona podcasts e episódios, permitindo que um podcast possua vários episódios.
-
-## 👥 Equipe e
